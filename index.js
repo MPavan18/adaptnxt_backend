@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 dotenv.config()
-const PORT=process.env.PORT ||4000;
+const PORT=process.env.PORT || 8000;
 app.use(express.json());
 app.use(cors());
 const authRoutes = require("./routes/authRoutes");

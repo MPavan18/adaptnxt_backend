@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-const jwtSecret = process.env.JWT_SECRET 
+const jwtSecret = process.env.JWT_SECRET;
 
 // Register User
 exports.register = async (req, res) => {
@@ -12,9 +12,6 @@ exports.register = async (req, res) => {
   if (!email || !password) {
     return res.status(400).json({ message: "Email and password are required" });
   }
-
-  // Check if admin role is requested
-  
 
   try {
     // Check if user exists
@@ -68,14 +65,13 @@ exports.login = async (req, res) => {
     const token = jwt.sign(
       { userId: user._id, email: user.email, role: user.role },
       jwtSecret
-      
     );
 
     // Send response with token and role
     res.status(200).json({
       message: "Login successful",
       token,
-
+      role: user.role, // Added role
     });
   } catch (error) {
     console.error("Login error:", error);
@@ -85,7 +81,7 @@ exports.login = async (req, res) => {
 
 // Protected Dashboard (Example)
 exports.getDashboard = async (req, res) => {
-  const token = req.headers.authorization?.split(" ")[1];
+  const token = req.headers.token;
 
   if (!token) {
     return res.status(401).json({ message: "No token provided" });
