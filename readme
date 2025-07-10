@@ -1,3 +1,4 @@
 User authentication: register, login with JWT (uses token header).
 Product management: create, update, delete products 
 Cart management: add/remove items, view cart 
+link for the application:-   https://adapt-nxt-frontend-6bovfamsn-mpavan18s-projects.vercel.app/
