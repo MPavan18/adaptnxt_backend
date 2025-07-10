@@ -1,0 +1,3 @@
+User authentication: register, login with JWT (uses token header).
+Product management: create, update, delete products 
+Cart management: add/remove items, view cart 
